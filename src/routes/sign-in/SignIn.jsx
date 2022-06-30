@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '../../components/button/Button';
+import SignUpForm from '../../components/sign-up-form/SignUpForm';
 import { signWithGooglePopup, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 import './SignIn.styles.scss';
 
@@ -13,7 +15,8 @@ const SignIn = () => {
       <h1>
         SignIn
       </h1>
-      <button onClick={logGoogleUser}>Sign in with google</button>
+      <Button onClick={logGoogleUser} buttonType='google'>Sign in with google</Button>
+      <SignUpForm />
     </div>
   );
 };
