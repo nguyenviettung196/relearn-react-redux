@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
 	getAuth,
-	signInWithRedirect,
+	// signInWithRedirect,
 	signInWithPopup,
 	GoogleAuthProvider,
 	createUserWithEmailAndPassword,
@@ -62,15 +62,17 @@ export const getCategoriesAndDocuments = async () => {
 	const collectionRef = collection(db, "categories");
 	const q = query(collectionRef);
 	const querySnapshot = await getDocs(q);
+
+	return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 	// console.log(querySnapshot.docs);
 	//reducing an array to object
-	const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-		// console.log("docsnapshot:", docSnapshot.data());
-		const { title, items } = docSnapshot.data();
-		acc[title.toLowerCase()] = items;
-		return acc;
-	}, {});
-	return categoryMap;
+	// const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+	// 	// console.log("docsnapshot:", docSnapshot.data());
+	// 	const { title, items } = docSnapshot.data();
+	// 	acc[title.toLowerCase()] = items;
+	// 	return acc;
+	// }, {});
+	// return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (
