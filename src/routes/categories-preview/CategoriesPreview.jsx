@@ -9,9 +9,6 @@ const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
   return (
     <div className='category-preview-container'>
-      {
-        console.log(Object.keys(categoriesMap))
-      }
       { // calling *Object.keys* return an array of obj's keys,then .map() through each array
         Object.keys(categoriesMap).map(title => {
           const products = categoriesMap[title];
